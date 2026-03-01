@@ -1,0 +1,32 @@
+receivers:
+  otlpjsonfile:
+    include:
+      - ./traces.json
+    start_at: beginning
+
+processors:
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  tail_sampling:
+    decision_wait: 10s
+    num_traces: 100
+    policies: []
+    # TODO: configure as politicas de amostragem:
+    # 1. always_sample_errors: manter sempre traces com status ERROR
+    # 2. always_sample_slow: manter sempre traces com latencia > 2 segundos
+    # 3. percentage_sample: amostrar 10% dos traces restantes
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlpjsonfile]
+      processors: [memory_limiter, tail_sampling, batch]
+      exporters: [debug]

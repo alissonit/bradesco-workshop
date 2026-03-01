@@ -1,0 +1,4 @@
+output.json
+*.tmp
+bin/
+local/

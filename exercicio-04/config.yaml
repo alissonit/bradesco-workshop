@@ -1,0 +1,42 @@
+receivers:
+  otlpjsonfile/1:
+    include:
+      - ./pagamentos-metrics.json
+    start_at: beginning
+  otlpjsonfile/2:
+    include:
+      - ./cartoes-metrics.json
+    start_at: beginning
+
+processors:
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  # TODO: adicione um transform processor aqui para remover
+  # atributos de alta cardinalidade dos resource attributes das métricas.
+  #
+  # Atributos a remover: process.command_line, process.command_args,
+  # process.pid, process.parent_pid, host.id
+  #
+  # Dica: use context: resource com metric_statements
+  # Consulte: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
+  transform:
+    error_mode: ignore
+    metric_statements:
+      - context: resource
+        statements: []
+        # Adicione aqui as statements para remover os atributos indesejados
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlpjsonfile/1, otlpjsonfile/2]
+      processors: [memory_limiter, transform, batch]
+      exporters: [debug]

@@ -1,0 +1,34 @@
+receivers:
+  filelog:
+    include:
+      - ./logs/app-com-pii.log
+    start_at: beginning
+    operators:
+      - type: json_parser
+
+processors:
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  transform:
+    log_statements:
+      - context: log
+        statements: []
+        # TODO: adicione as regras OTTL aqui
+        # 1. replace_pattern para substituir CPFs por [REDACTED]
+        # 2. delete_key para remover auth.token e db.password
+        # 3. truncate_all para limitar atributos a 256 caracteres
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [memory_limiter, transform, batch]
+      exporters: [debug]

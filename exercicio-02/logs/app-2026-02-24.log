@@ -1,0 +1,13 @@
+2026-02-24 08:01:12.345 INFO  [main] com.example.App - Aplicação iniciada com sucesso
+2026-02-24 08:01:12.567 INFO  [main] com.example.App - Conectando ao banco de dados PostgreSQL em db-prod-01:5432
+2026-02-24 08:01:13.012 INFO  [main] com.example.App - Pool de conexões inicializado: min=5, max=20
+2026-02-24 08:01:15.234 INFO  [http-thread-1] com.example.ApiController - GET /api/v1/contas 200 45ms
+2026-02-24 08:01:15.456 INFO  [http-thread-2] com.example.ApiController - GET /health 200 2ms
+2026-02-24 08:01:16.789 WARN  [http-thread-1] com.example.ApiController - GET /api/v1/transacoes?conta=12345 200 1250ms - resposta lenta
+2026-02-24 08:01:17.012 INFO  [http-thread-3] com.example.ApiController - POST /api/v1/transferencias 201 89ms
+2026-02-24 08:01:17.234 INFO  [http-thread-2] com.example.ApiController - GET /health 200 1ms
+2026-02-24 08:01:18.456 ERROR [http-thread-4] com.example.ApiController - GET /api/v1/extratos 500 234ms - java.lang.NullPointerException: conta não encontrada
+2026-02-24 08:01:19.678 INFO  [http-thread-1] com.example.ApiController - GET /api/v1/contas/67890/saldo 200 34ms
+2026-02-24 08:01:20.890 INFO  [http-thread-2] com.example.ApiController - GET /health 200 1ms
+2026-02-24 08:01:21.123 INFO  [scheduler-1] com.example.BatchProcessor - Processamento batch iniciado: 1.247 transações pendentes
+2026-02-24 08:01:25.456 INFO  [scheduler-1] com.example.BatchProcessor - Processamento batch concluído em 4.333ms

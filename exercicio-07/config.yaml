@@ -1,0 +1,32 @@
+receivers:
+  otlpjsonfile:
+    include:
+      - ./traces.json
+    start_at: beginning
+
+processors:
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  filter/noise:
+    error_mode: ignore
+    traces:
+      span: []
+      # TODO: adicione as condições OTTL para descartar spans sem valor
+      # 1. health checks do Kubernetes (GET /health/**)
+      # 2. Redis PING (health check de conexão)
+      # 3. static assets (.well-known/jwks.json, swagger-ui)
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlpjsonfile]
+      processors: [memory_limiter, filter/noise, batch]
+      exporters: [debug]

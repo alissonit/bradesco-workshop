@@ -1,0 +1,25 @@
+receivers:
+  filelog:
+    include:
+      - ./logs/app-*.log
+    start_at: beginning
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+    spike_limit_mib: 128
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [memory_limiter, batch]
+      exporters: [debug]

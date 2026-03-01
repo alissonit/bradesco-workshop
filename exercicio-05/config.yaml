@@ -1,0 +1,29 @@
+receivers:
+  filelog:
+    include:
+      - ./logs/app-ruidosa.log
+    start_at: beginning
+
+processors:
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  # TODO: adicione um filter processor para descartar logs de ruído
+  # (Spring Boot internals, health checks do actuator)
+  #
+  # TODO: adicione um logdedup processor para agregar logs repetidos
+  # (Kafka disconnects, erros 504 repetidos, eventos K8s)
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [memory_limiter, batch]
+      exporters: [debug]

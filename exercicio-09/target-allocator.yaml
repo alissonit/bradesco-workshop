@@ -1,0 +1,58 @@
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel-collector-metrics
+  namespace: observability
+spec:
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.143.1
+  mode: statefulset
+  replicas: 3
+  targetAllocator:
+    enabled: true
+    allocationStrategy: consistent-hashing
+    prometheusCR:
+      enabled: true
+      serviceMonitorSelector:
+        matchLabels:
+          team: backend
+      podMonitorSelector:
+        matchLabels:
+          team: backend
+  resources:
+    limits:
+      memory: 1Gi
+      cpu: 500m
+    requests:
+      memory: 256Mi
+      cpu: 100m
+  config:
+    receivers:
+      prometheus:
+        config:
+          scrape_configs: []
+        target_allocator:
+          endpoint: http://otel-collector-metrics-targetallocator.observability:80
+          interval: 30s
+          collector_id: ${POD_NAME}
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_mib: 800
+        spike_limit_mib: 200
+      batch:
+        send_batch_size: 512
+        timeout: 5s
+
+    exporters:
+      otlp:
+        endpoint: backend-observability:4317
+        tls:
+          insecure: false
+
+    service:
+      pipelines:
+        metrics:
+          receivers: [prometheus]
+          processors: [memory_limiter, batch]
+          exporters: [otlp]

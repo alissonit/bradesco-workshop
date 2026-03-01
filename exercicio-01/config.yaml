@@ -1,0 +1,29 @@
+receivers:
+  otlpjsonfile/1:
+    include:
+      - ./35655312-metrics.json
+    start_at: beginning
+  otlpjsonfile/2:
+    include:
+      - ./35655313-metrics.json
+    start_at: beginning
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+    spike_limit_mib: 128
+  batch:
+    send_batch_size: 256
+    timeout: 5s
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlpjsonfile/1, otlpjsonfile/2]
+      processors: [memory_limiter, batch]
+      exporters: [debug]

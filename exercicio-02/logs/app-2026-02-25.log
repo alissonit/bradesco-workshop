@@ -1,0 +1,14 @@
+2026-02-25 08:00:45.123 INFO  [main] com.example.App - Aplicação iniciada com sucesso
+2026-02-25 08:00:45.456 INFO  [main] com.example.App - Conectando ao banco de dados PostgreSQL em db-prod-01:5432
+2026-02-25 08:00:46.012 INFO  [main] com.example.App - Pool de conexões inicializado: min=5, max=20
+2026-02-25 08:00:48.234 INFO  [http-thread-1] com.example.ApiController - GET /api/v1/contas 200 52ms
+2026-02-25 08:00:48.456 INFO  [http-thread-2] com.example.ApiController - GET /health 200 1ms
+2026-02-25 08:00:49.789 INFO  [http-thread-3] com.example.ApiController - POST /api/v1/transferencias 201 102ms
+2026-02-25 08:00:50.012 WARN  [http-thread-1] com.example.ApiController - GET /api/v1/transacoes?conta=54321 200 2100ms - resposta lenta
+2026-02-25 08:00:50.234 INFO  [http-thread-2] com.example.ApiController - GET /ready 200 1ms
+2026-02-25 08:00:51.456 INFO  [http-thread-4] com.example.ApiController - GET /api/v1/contas/11223/saldo 200 28ms
+2026-02-25 08:00:52.678 ERROR [http-thread-3] com.example.ApiController - POST /api/v1/transferencias 500 567ms - java.sql.SQLException: Connection pool exhausted
+2026-02-25 08:00:53.890 INFO  [http-thread-2] com.example.ApiController - GET /health 200 2ms
+2026-02-25 08:00:55.123 INFO  [scheduler-1] com.example.BatchProcessor - Processamento batch iniciado: 2.891 transações pendentes
+2026-02-25 08:00:59.456 INFO  [scheduler-1] com.example.BatchProcessor - Processamento batch concluído em 4.333ms
+2026-02-25 08:01:00.678 INFO  [http-thread-2] com.example.ApiController - GET /health 200 1ms

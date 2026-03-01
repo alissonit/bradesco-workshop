@@ -1,0 +1,51 @@
+2026-02-24T08:00:01.123Z INFO  [kafka-consumer] Consumer clientId [consumer-group-pagamentos-1] disconnected
+2026-02-24T08:00:01.124Z WARN  [kafka-consumer] Bootstrap broker disconnected
+2026-02-24T08:00:01.200Z INFO  [kafka-consumer] Consumer clientId [consumer-group-pagamentos-1] disconnected
+2026-02-24T08:00:01.201Z WARN  [kafka-consumer] Bootstrap broker disconnected
+2026-02-24T08:00:01.300Z INFO  [kafka-consumer] Consumer clientId [consumer-group-pagamentos-1] disconnected
+2026-02-24T08:00:01.301Z WARN  [kafka-consumer] Bootstrap broker disconnected
+2026-02-24T08:00:01.400Z INFO  [kafka-consumer] Consumer clientId [consumer-group-pagamentos-1] disconnected
+2026-02-24T08:00:01.401Z WARN  [kafka-consumer] Bootstrap broker disconnected
+2026-02-24T08:00:01.500Z INFO  [kafka-consumer] Consumer clientId [consumer-group-pagamentos-1] disconnected
+2026-02-24T08:00:01.501Z WARN  [kafka-consumer] Bootstrap broker disconnected
+2026-02-24T08:00:02.100Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.200Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.300Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.400Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.500Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.600Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.700Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:02.800Z TRACE [spring] Returning cached instance of singleton bean 'autoConfigurationReport'
+2026-02-24T08:00:03.100Z DEBUG [actuator] Completed 200 OK
+2026-02-24T08:00:03.200Z DEBUG [actuator] Read "application/octet-stream" to []
+2026-02-24T08:00:03.300Z DEBUG [actuator] Using 'spring-boot.actuator.v3+json'
+2026-02-24T08:00:03.400Z DEBUG [actuator] Mapped to Actuator web endpoint 'health-path'
+2026-02-24T08:00:03.500Z DEBUG [actuator] Completed 200 OK
+2026-02-24T08:00:03.600Z DEBUG [actuator] Read "application/octet-stream" to []
+2026-02-24T08:00:03.700Z DEBUG [actuator] Using 'spring-boot.actuator.v3+json'
+2026-02-24T08:00:03.800Z DEBUG [actuator] Mapped to Actuator web endpoint 'health-path'
+2026-02-24T08:00:03.900Z DEBUG [actuator] Completed 200 OK
+2026-02-24T08:00:03.950Z DEBUG [actuator] Read "application/octet-stream" to []
+2026-02-24T08:00:04.000Z DEBUG [actuator] Using 'spring-boot.actuator.v3+json'
+2026-02-24T08:00:04.050Z DEBUG [actuator] Mapped to Actuator web endpoint 'health-path'
+2026-02-24T08:00:05.100Z ERROR [antifraud] {"retorno":"ERRO_FATAL","codigoErro":"504","mensagem":"Gateway Timeout"}
+2026-02-24T08:00:05.200Z ERROR [antifraud] {"status":504,"error":"Gateway Timeout","path":"/api/v1/validacao"}
+2026-02-24T08:00:05.300Z ERROR [antifraud] {"retorno":"ERRO_FATAL","codigoErro":"504","mensagem":"Gateway Timeout"}
+2026-02-24T08:00:05.400Z ERROR [antifraud] {"status":504,"error":"Gateway Timeout","path":"/api/v1/validacao"}
+2026-02-24T08:00:05.500Z ERROR [antifraud] {"retorno":"ERRO_FATAL","codigoErro":"504","mensagem":"Gateway Timeout"}
+2026-02-24T08:00:05.600Z ERROR [antifraud] {"status":504,"error":"Gateway Timeout","path":"/api/v1/validacao"}
+2026-02-24T08:00:05.700Z ERROR [antifraud] {"retorno":"ERRO_FATAL","codigoErro":"504","mensagem":"Gateway Timeout"}
+2026-02-24T08:00:05.800Z ERROR [antifraud] {"status":504,"error":"Gateway Timeout","path":"/api/v1/validacao"}
+2026-02-24T08:00:06.100Z INFO  [pix-service] Transferência PIX processada com sucesso - valor: R$ 150,00
+2026-02-24T08:00:06.200Z INFO  [pix-service] Transferência PIX processada com sucesso - valor: R$ 2.500,00
+2026-02-24T08:00:06.300Z WARN  [pix-service] Tempo de resposta acima do SLA: 1.2s
+2026-02-24T08:00:06.400Z INFO  [auth-service] Token renovado para sessão ativa
+2026-02-24T08:00:06.500Z ERROR [db-service] Timeout ao executar query no banco de dados - tentativa 3/3
+2026-02-24T08:00:07.100Z WARN  [k8s-events] Nameserver limits were exceeded, some DNS queries may have failed
+2026-02-24T08:00:07.200Z WARN  [k8s-events] Nameserver limits were exceeded, some DNS queries may have failed
+2026-02-24T08:00:07.300Z WARN  [k8s-events] Nameserver limits were exceeded, some DNS queries may have failed
+2026-02-24T08:00:07.400Z WARN  [k8s-events] failed to get cpu utilization
+2026-02-24T08:00:07.500Z WARN  [k8s-events] failed to get cpu utilization
+2026-02-24T08:00:07.600Z INFO  [k8s-events] Successfully pulled image "registry.example.com/app:v1.2.3"
+2026-02-24T08:00:07.700Z INFO  [k8s-events] Created container app
+2026-02-24T08:00:07.800Z INFO  [k8s-events] Started container app
